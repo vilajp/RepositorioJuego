@@ -1,1 +1,3 @@
-entorno/
+_pycache_/
+*.py[cod]
+*.pyc...
