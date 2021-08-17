@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from apps.partida.models import Preguntas,Respuestas, Respuesta_Incorrecta
 import random
+from django.http import HttpResponse
 # Create your views here.
 #Esta funcion carga una pregunta aleatoria
 def comienzo(request):
