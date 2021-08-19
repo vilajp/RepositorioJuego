@@ -16,6 +16,8 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from apps.partida import views
+from apps.registro.forms import RegistroFormulario
+from apps.registro import views as registro
 
 
 
@@ -23,5 +25,6 @@ urlpatterns = [
     path("",views.home,name='home' ),
     path('admin/', admin.site.urls),
     path('partida/',views.comienzo,name="partida"),
+    path('registro/', registro.Create.as_view(template_name='registro.html') , name = 'registro' ),
     
 ]
