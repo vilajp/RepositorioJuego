@@ -1,26 +1,33 @@
 from django.db import models
 
+# Relaciones:
+# Pregunta UNO-A-MUCHOS RespuestaIncorrecta -> ForeignKey va en MUCHOS
+# Pregunta UNO-A-MUCHOS (o UNO-A-UNO) RespuestaCorrecta -> ForeignKey va en MUCHOS
+
+from django.db import models
+
 # Create your models here.
-class Respuestas(models.Model):
-    respuesta = models.CharField(max_length=200)
-   
-    def __str__(self):
-        return self.respuesta
-
-
-class Preguntas(models.Model):
-    pregunta = models.CharField(max_length=200)
-    respuesta_correcta = models.ForeignKey('Respuestas', related_name = 'mi_respuesta', on_delete = models.SET_NULL, null = True)
-    respuesta_erronea = models.ForeignKey('Respuesta_Incorrecta', related_name = 'mi_respuesta_inc', on_delete = models.SET_NULL, null = True)
+class RespuestaCorrecta(models.Model):
+    texto = models.CharField(max_length=200)
+    pregunta = models.ForeignKey('Pregunta', on_delete = models.CASCADE)
+    #pregunta = models.ForeignKey('Pregunta', on_delete = models.SET_NULL, null=True)
 
     def __str__(self):
-        return self.pregunta
-    
+        return self.texto
 
-class Respuesta_Incorrecta(models.Model):
-    respuesta_incorrecta = models.CharField(max_length=200)
+
+class Pregunta(models.Model):
+    texto = models.CharField(max_length=200)
+    #respuesta_correcta = models.ForeignKey('RespuestaCorrecta',on_delete = models.CASCADE)
 
     def __str__(self):
-        return self.respuesta_incorrecta
+        return self.texto
 
-    
+
+class RespuestaIncorrecta(models.Model):
+    texto = models.CharField(max_length=200)
+    pregunta = models.ForeignKey('Pregunta', on_delete = models.CASCADE)
+    #pregunta = models.ForeignKey('Pregunta', on_delete = models.SET_NULL, null=True)
+
+    def __str__(self):
+        return self.texto

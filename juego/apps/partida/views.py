@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from apps.partida.models import Preguntas,Respuestas, Respuesta_Incorrecta
+from apps.partida.models import Pregunta, RespuestaCorrecta, RespuestaIncorrecta
 import random
 from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
@@ -7,22 +7,29 @@ from django.contrib.auth.decorators import login_required
 # Create your views here.
 #Esta funcion carga una pregunta aleatoria
 def comienzo(request):
-    lista_preguntas = Preguntas.objects.all()
-    cantidad = len(lista_preguntas)
-    una_id = random.randint(1,cantidad)
-    una_pregunta = Preguntas.objects.get(id=una_id)
     if request.method == 'GET':
-        context = {"pregunta":una_pregunta,"respuesta":una_pregunta.respuesta_correcta,"incorrecta":una_pregunta.respuesta_erronea}
+        respuestas = list()
+
+        lista_preguntas = Pregunta.objects.all()
+        cantidad = len(lista_preguntas)
+        una_id = random.randint(1,cantidad)
+        una_pregunta = Pregunta.objects.get(id=una_id)
+        # Se obtiene la respuesta correcta
+        for rc in RespuestaCorrecta.objects.all():
+            if rc.pregunta_id == una_pregunta.pk:
+                respuestas.append(rc)
+                break
+        # Se obtiene las respuestas incorrectas
+        for ri in RespuestaIncorrecta.objects.all():
+            if ri.pregunta_id == una_pregunta.pk:
+                respuestas.append(ri)
+
+        context = {"pregunta":una_pregunta,"respuestas":respuestas}
         return render(request,"partida.html",context)
-
     elif request.method == 'POST':
-        if request.POST.get("respuesta") == str(una_pregunta.respuesta_correcta):
-            return HttpResponse("Felicidades!!!")
-        else:
-            return HttpResponse("Fallaste!!!")
+        #print(request)
+        return HttpResponse(request)
 
-    
 @login_required
 def home(request):
     return render(request, 'home.html')
-
