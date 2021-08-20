@@ -2,6 +2,8 @@ from django.shortcuts import render
 from apps.partida.models import Preguntas,Respuestas, Respuesta_Incorrecta
 import random
 from django.http import HttpResponse
+from django.contrib.auth.decorators import login_required
+
 # Create your views here.
 #Esta funcion carga una pregunta aleatoria
 def comienzo(request):
@@ -20,7 +22,7 @@ def comienzo(request):
             return HttpResponse("Fallaste!!!")
 
     
-
+@login_required
 def home(request):
     return render(request, 'home.html')
 

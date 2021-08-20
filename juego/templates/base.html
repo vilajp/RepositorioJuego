@@ -1,0 +1,27 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+	<title>PROVINCIALIZACION</title>
+	<link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
+</head>
+<body>
+<div style="margin-bottom: 100px;">
+
+{% if user.is_authenticated %}
+	<span>{{user.username}}</span>
+	<a href="{% url 'logout' %}">LOGOUT</a>
+{% else %}
+	<a href="{% url 'login' %}">LOGIN</a>
+{% endif %}
+
+
+</div>
+
+{% block contenido %}
+	
+{% endblock contenido %}
+
+
+</body>
+</html>

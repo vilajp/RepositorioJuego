@@ -8,15 +8,11 @@
 </head>
 <body>
     <form method="POST">{% csrf_token %}
-		{{form.errors}}
-		<input type="text" name="first_name" placeholder="nombre">
-		<input type="text" name="last_name" placeholder="apellido">
-        <input type="password" name="password1" placeholder="password">
-        <input type="password" name="password2" placeholder="password">
-        
+		{{form.as_p}}
+		<br>
         
 		
-		<input type="submit" name="" value="LOGIN">
+		<input type="submit" name="" value="REGISTRAR">
 
 	</form>
 </body>
