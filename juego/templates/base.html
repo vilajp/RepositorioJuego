@@ -6,19 +6,22 @@
 	<link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
 </head>
 <body>
+	<header>
 <div style="margin-bottom: 100px;">
 
 {% if user.is_authenticated %}
-	<span>{{user.username}}</span>
+	<span>{{user.username}} {{user.puntaje}}</span>
 	<a href="{% url 'logout' %}">LOGOUT</a>
 {% else %}
 	<a href="{% url 'login' %}">LOGIN</a>
 {% endif %}
-
+</header>
 
 </div>
 
 {% block contenido %}
+
+
 	
 {% endblock contenido %}
 

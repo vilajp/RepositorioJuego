@@ -1,12 +1,16 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+
 from apps.partida.models import Pregunta, RespuestaCorrecta, RespuestaIncorrecta
+from apps.usuarios.models import Usuario
 import random
 from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 #Esta funcion carga una pregunta aleatoria
+@login_required
 def comienzo(request):
+
     if request.method == 'GET':
         respuestas = list()
 
@@ -26,9 +30,26 @@ def comienzo(request):
 
         context = {"pregunta":una_pregunta,"respuestas":respuestas}
         return render(request,"partida.html",context)
+
     elif request.method == 'POST':
-        #print(request)
-        return HttpResponse(request)
+        
+        respuesta, id_pregunta = request.POST.get("respuesta").split("_")
+        una_respuesta = RespuestaCorrecta.objects.get(pregunta_id = id_pregunta)
+        pregunta = Pregunta.objects.get(id = id_pregunta)
+        u = Usuario.objects.get(username=str(request.user))
+
+        u.pregunta_contestada.add(pregunta)
+        print(pregunta)
+        print(u.pregunta_contestada)
+
+        if respuesta == str(una_respuesta):
+            u.puntaje +=10
+
+        u.save()   
+            
+
+
+        return redirect('partida')
 
 @login_required
 def home(request):

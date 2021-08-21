@@ -1,24 +1,23 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PARTIDA</title>
-</head>
-<body>
-  <div id="titulo"><h1>PARTIDA G8</h1></div>
-  <div id="pregunta">
-    <h2>{{pregunta}}</h2>
-  </div>
-    <form action="{% url 'partida'  %}" method="post">
-      {% csrf_token %}
-      {% for r in respuestas %}
-        <!-- <input type="radio" name="respuesta" value="{{ r }}">{{ r.texto }}<br> -->
-        <input type="radio" name="respuesta" value="{{ r }}_{{ r.pregunta_id }}">{{ r.texto }}<br>
-      {% endfor %}
-      <input type="submit" value="LISTO">
-    </form>
+{% extends 'base.html' %}
+{% load static %}
 
 
-</body>
-</html>
+
+{% block contenido %}
+
+<div id="titulo"><h1>PARTIDA G8</h1></div>
+<div id="pregunta">
+  <h2>{{pregunta}}</h2>
+</div>
+  <form action="{% url 'partida'  %}" method="post">
+    {% csrf_token %}
+    {% for r in respuestas %}
+      <!-- <input type="radio" name="respuesta" value="{{ r }}">{{ r.texto }}<br> -->
+      <input type="radio" name="respuesta" value="{{ r }}_{{ r.pregunta_id }}">{{ r.texto }}<br>
+    {% endfor %}
+    <input type="submit" value="LISTO">
+  </form>
+	
+{% endblock contenido %}
+
+

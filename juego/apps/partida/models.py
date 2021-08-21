@@ -19,6 +19,7 @@ class RespuestaCorrecta(models.Model):
 class Pregunta(models.Model):
     texto = models.CharField(max_length=200)
     #respuesta_correcta = models.ForeignKey('RespuestaCorrecta',on_delete = models.CASCADE)
+    categoria = models.ForeignKey('Categoria', on_delete = models.CASCADE)
 
     def __str__(self):
         return self.texto
@@ -31,3 +32,9 @@ class RespuestaIncorrecta(models.Model):
 
     def __str__(self):
         return self.texto
+
+class Categoria(models.Model):
+    nombre = models.CharField(max_length=30)
+
+    def __str__(self):
+        return self.nombre
