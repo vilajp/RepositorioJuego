@@ -1,9 +1,8 @@
 from django.contrib import admin
-from .models import Pregunta, RespuestaCorrecta, RespuestaIncorrecta, Categoria
+from .models import Pregunta, Respuesta, Categoria
 
 
 # Register your models here.
 admin.site.register(Pregunta)
-admin.site.register(RespuestaCorrecta)
-admin.site.register(RespuestaIncorrecta)
+admin.site.register(Respuesta)
 admin.site.register(Categoria)

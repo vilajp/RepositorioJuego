@@ -10,7 +10,7 @@
 	<div style="margin-bottom: 100px;" class="login">
 
 		{% if user.is_authenticated %}
-			<span>{{user.username}} {{user.puntaje}}</span>
+			<span>{{user.username}} {{user.puntaje}} (RESTAURAR PUNTAJE)</span>
 			<a href="{% url 'logout' %}">LOGOUT</a>
 		{% else %}
 			<a href="{% url 'login' %}">LOGIN</a>
@@ -27,7 +27,7 @@
 {% block contenido %}
 
 
-	
+
 {% endblock contenido %}
 
 
