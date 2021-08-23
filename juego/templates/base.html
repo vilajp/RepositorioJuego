@@ -6,18 +6,23 @@
 	<link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
 </head>
 <body>
-	<header>
-<div style="margin-bottom: 100px;">
+<header>
+	<div style="margin-bottom: 100px;" class="login">
 
-{% if user.is_authenticated %}
-	<span>{{user.username}} {{user.puntaje}}</span>
-	<a href="{% url 'logout' %}">LOGOUT</a>
-{% else %}
-	<a href="{% url 'login' %}">LOGIN</a>
-{% endif %}
+		{% if user.is_authenticated %}
+			<span>{{user.username}} {{user.puntaje}}</span>
+			<a href="{% url 'logout' %}">LOGOUT</a>
+		{% else %}
+			<a href="{% url 'login' %}">LOGIN</a>
+		{% endif %}
+		</div>
+
 </header>
 
-</div>
+
+
+
+
 
 {% block contenido %}
 
