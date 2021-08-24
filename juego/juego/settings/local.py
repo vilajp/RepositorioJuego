@@ -2,6 +2,8 @@ from .base import *
 
 DEBUG = True
 
+AUTH_PASSWORD_VALIDATORS = []
+
 DATABASES = {
     'default': {
         'ENGINE': 'sql_server.pyodbc',

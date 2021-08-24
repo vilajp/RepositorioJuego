@@ -9,6 +9,10 @@ def register(request):
     if request.method == 'POST':
         form = RegistroFormulario(request.POST)
         if form.is_valid():
+
+            print(dir(form))
+            print(form.cleaned_data)
+
             form.save()
             return redirect('home')
     else:

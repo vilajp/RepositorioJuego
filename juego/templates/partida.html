@@ -7,13 +7,16 @@
 
 <div id="titulo"><h1>PARTIDA G8</h1></div>
 <div id="pregunta">
+
+  <h2>Puntaje: {{puntaje}}</h2> <a href="{% url 'borrar'  %}">TERMINAR EL JUEGO</a>
+
   <h2>{{pregunta}}</h2>
 </div>
   <form action="{% url 'partida'  %}" method="post">
     {% csrf_token %}
     {% for r in respuestas %}
       <!-- <input type="checkbox" name="respuesta" value="{{ r }}">{{ r.texto }}<br> -->
-      <input type="checkbox" name="respuesta" value="{{ r }}_{{ r.pregunta_id }}">{{ r.texto }}<br>
+      <input type="checkbox" name="respuesta" value="{{ r.id }}_{{ r.pregunta_id }}">{{ r.texto }}<br>
     {% endfor %}
     <input type="submit" value="LISTO">
   </form>

@@ -24,6 +24,7 @@ from django.contrib.auth import views as auth
 
 urlpatterns = [
     path("",views.home,name='home' ),
+    path('borrar/', views.borrar, name = "borrar"),
     path('admin/', admin.site.urls),
     path('partida/',views.comienzo,name="partida"),
     path('registro/', registro.register, name = 'registro' ),
