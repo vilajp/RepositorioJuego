@@ -12,8 +12,8 @@
   <form action="{% url 'partida'  %}" method="post">
     {% csrf_token %}
     {% for r in respuestas %}
-      <!-- <input type="radio" name="respuesta" value="{{ r }}">{{ r.texto }}<br> -->
-      <input type="radio" name="respuesta" value="{{ r }}_{{ r.pregunta_id }}">{{ r.texto }}<br>
+      <!-- <input type="checkbox" name="respuesta" value="{{ r }}">{{ r.texto }}<br> -->
+      <input type="checkbox" name="respuesta" value="{{ r }}_{{ r.pregunta_id }}">{{ r.texto }}<br>
     {% endfor %}
     <input type="submit" value="LISTO">
   </form>

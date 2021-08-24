@@ -27,6 +27,16 @@ def comienzo(request):
         return render(request,"partida.html",context)
 
     elif request.method == 'POST':
+        lista_respuestas = list()
+        
+        for cada_respuesta in request.POST.getlist('respuesta'):
+            una_respuesta, id_pregunta = cada_respuesta.split("_")
+            lista_respuestas.append(una_respuesta)
+        
+        respuestas_correctas = Respuesta.objects.all().filter(pregunta = id_pregunta, es_correcta=1)
+        respuestas_correctas = [x for x["Respuesta"] in respuestas_correctas]
+        print(respuestas_correctas)
+        print(lista_respuestas)
         return HttpResponse('RESTAURAR POST, está comentado en view porque hay que adaptarlo')
         # respuesta, id_pregunta = request.POST.get("respuesta").split("_")
         # una_respuesta = RespuestaCorrecta.objects.get(pregunta_id = id_pregunta)
