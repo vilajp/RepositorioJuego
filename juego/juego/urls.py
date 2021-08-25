@@ -18,6 +18,7 @@ from django.urls import path
 from apps.partida import views
 from apps.registro.forms import RegistroFormulario
 from apps.registro import views as registro
+from apps.estadisticas import views as view_estadistica
 from django.contrib.auth import views as auth
 
 
@@ -30,6 +31,9 @@ urlpatterns = [
     path('registro/', registro.register, name = 'registro' ),
     path('login/',auth.LoginView.as_view(template_name = 'login.html'),name = 'login'),
     path('logout/',auth.LogoutView.as_view(),name = 'logout'),
+    path('estadistica/',view_estadistica.estadistica, name = 'estadistica'),
+
+
 
     
 ]

@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+
+{% block contenido %}
+
+<h1>Ranking Jugadores por puntaje acumulado</h1><br>
+<br>
+<ol>
+{% for linea, detalle in usuario.items %}
+    
+    <li>{{linea}}: {{detalle.0}} {{detalle.1}} Efectividad {{detalle.0|div:detalle.1}}</li>
+   
+{% endfor %}
+</ol>	
+{% endblock contenido %}

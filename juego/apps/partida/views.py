@@ -57,6 +57,7 @@ def comienzo(request):
 
         u = Usuario.objects.get(username=str(request.user))
         j = Juego.objects.latest('id')
+        j.cantidad_preguntas_contestadas += 1 
 
         if lista_correctas == lista_respuestas:
 
