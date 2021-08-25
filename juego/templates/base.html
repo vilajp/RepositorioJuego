@@ -8,7 +8,7 @@
 <body>
 <header>
 	<div style="margin-bottom: 100px;" class="login">
-
+		
 		{% if user.is_authenticated %}
 			<span>{{user.username}}</span>
 			<a href="{% url 'logout' %}">LOGOUT</a>
@@ -16,8 +16,13 @@
 			<a href="{% url 'login' %}">LOGIN</a>
 		{% endif %}
 		</div>
-
-</header>
+		<div style="margin-bottom: 100px;padding: 20px;" class="menu">
+			<a href="{% url 'partida'  %}"><h1>Partida</h1></a>
+		</div>
+		<div style="margin-bottom: 100px; padding: 20px;" class="menu">
+			<a href="{% url 'estadistica'  %}"><h1>Ranking Jugadores</h1></a>
+		</div>
+	</header>
 
 
 
