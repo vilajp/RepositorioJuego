@@ -7,6 +7,15 @@
 </head>
 <body>
 <header>
+	<section id="principal">
+		<ul>
+			<li class="item"><a href="#">Inicio</a></li>
+			<li class="item"><a href="#Como-Jugar">Como Jugar</a></li>
+			<li class="item"><a href="#Nosotros">Nosotros</a></li>
+			<li class="item"><a href="#Contacto">Contacto</a></li>
+		</ul>
+	</section>
+  
 	<div style="margin-bottom: 100px;" class="login">
 		
 		{% if user.is_authenticated %}
@@ -30,11 +39,38 @@
 
 
 {% block contenido %}
-
+  
+	
 
 
 {% endblock contenido %}
 
+<section id="Como-Jugar" class="section">
+	Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+	Cum laudantium id, repudiandae optio ipsum accusamus sint at.
+	Iusto autem facere atque distinctio, vero mollitia corrupti
+	necessitatibus, numquam molestiae, deserunt porro!
+
+	<p><a href="#principal">Ir al Principio</a></p>
+</section>
+
+<section id="Nosotros" class="section">
+   Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+   Cum laudantium id, repudiandae optio ipsum accusamus sint at.
+   Iusto autem facere atque distinctio, vero mollitia corrupti
+   necessitatibus, numquam molestiae, deserunt porro!
+
+   <p><a href="#principal">Ir al Principio</a></p>
+</section>
+
+<section id="Contacto" class="section">
+Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+Cum laudantium id, repudiandae optio ipsum accusamus sint at.
+Iusto autem facere atque distinctio, vero mollitia corrupti
+necessitatibus, numquam molestiae, deserunt porro!
+
+ <p><a href="#principal">Ir al Principio</a></p>
+</section>
 
 </body>
 </html>

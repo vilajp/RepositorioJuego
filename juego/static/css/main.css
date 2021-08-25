@@ -1,7 +1,53 @@
 form {
-    font-size: larger;
-    padding-left: 30%;
-    color: rgb(241, 241, 247);
+ 
+  background:#1ab188;
+  padding: 40px;
+  max-width:600px;
+  margin:40px auto;
+  border-radius:2%;
+  box-shadow: 10px 13px 37px #000;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  text-align: center;
+
+  
+}
+input{
+	width: calc(100% - 10px);
+	padding: 7px;
+	margin: auto;
+	margin-top: 8px;
+	font-size: 16px;
+  border-radius: 1.5%;
+  
+ 
+
+}
+
+.registrar{
+  
+  font-size: 20px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+#pregunta{
+  
+  text-align: center;
+}
+
+
+input[type='submit']{
+	background-color: #48e;
+	box-shadow: 10px 13px 37px #000;
+	color: #fff;
+	width: calc(50% - 20px);
+	margin: 0 25%;
+	margin-top: 22px;
+	border: none;
+
+  
+	
+	
+	
+	
 }
 body {
     margin: 0;
@@ -17,8 +63,8 @@ body {
   }
   .principal {
     font-size: calc(1.375rem + 1.5vw);
-    padding-left: 10%;
-    background-color:#AAD8D3;
+    padding-left: 40%;
+    background-color:#44D7A8;
     color: rgb(237, 234, 240);
   }
   @media (min-width: 1200px) {
@@ -27,7 +73,7 @@ body {
     }
   }
   a{
-      color: lightsteelblue;
+      color: rgb(237, 234, 240);
   }
   
   span {
@@ -36,10 +82,16 @@ body {
   }
   @media (min-width: 1200px) {
     h2, .h2 {
+      
       font-size: 2rem;
       font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     }
   }
+  .head-boton{
+    text-decoration: none;
+      width: 30px;
+  }
+  
   
   h3, .h3 {
     font-size: calc(1.3rem + 0.6vw);
