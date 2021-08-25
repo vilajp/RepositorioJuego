@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load mathfilters %}
 
 
 
@@ -10,7 +11,7 @@
 <ol>
 {% for linea, detalle in usuario.items %}
     
-    <li>{{linea}}: {{detalle.0}} {{detalle.1}} Efectividad {{detalle.0|div:detalle.1}}</li>
+    <li>{{linea}}: {{detalle.0}} {{detalle.1}} Efectividad {{detalle.0|div:detalle.1|mul:100}}</li>
    
 {% endfor %}
 </ol>	
