@@ -6,21 +6,28 @@ from apps.usuarios.models import Usuario
 def estadistica(request):
     j = Juego.objects.all()
     u = Usuario.objects.all()
-    acumulador = 0
+    acumulador_preguntas = 0
     acumulador_puntaje = 0
     dic_jugadas = dict()
     dic_jugadas['usuario']=dict()
+    efectividad = 0
     for cada_usuario in u:
         
         for cada_jugada in j:
             if cada_usuario.id == cada_jugada.usuario_id:
-                acumulador  += cada_jugada.cantidad_preguntas_contestadas
+                acumulador_preguntas += cada_jugada.cantidad_preguntas_contestadas
                 acumulador_puntaje += cada_jugada.puntaje
+            
+            if acumulador_preguntas != 0:
+                efectividad = ((acumulador_puntaje/10)/acumulador_preguntas)*100
 
-
-        dic_jugadas['usuario'][cada_usuario.username] = [acumulador, acumulador_puntaje]
-        acumulador = 0
+            dic_jugadas['usuario'][cada_usuario.username] = [acumulador_preguntas, acumulador_puntaje,efectividad]
+        print(dic_jugadas)
+        acumulador_preguntas = 0
         acumulador_puntaje = 0
+        efectividad = 0
+
+    #ordenamos el diccionario    
     dic_ordenado = dict()
     dic_ordenado['usuario'] = dict()
     mayor = 0
@@ -29,9 +36,10 @@ def estadistica(request):
             if v[1] > mayor:
                 preguntas = v[0]
                 puntaje_mayor = v[1]
-        dic_ordenado['usuario'][k] = [preguntas, puntaje_mayor]
-        del dic_jugadas['usuario'][k]    
+                efectividad = v[2]
+        dic_ordenado['usuario'][k] = [preguntas, puntaje_mayor, efectividad]
+        del dic_jugadas['usuario'][k]   
+    print(dic_ordenado) 
 
-    print(dic_jugadas)   
     return render(request, 'estadistica.html', dic_ordenado)
 

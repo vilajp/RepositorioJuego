@@ -60,16 +60,17 @@ section{
 form {
  
   background:#1ab188;
-  padding: 40px;
+  padding: 30px;
   max-width:600px;
-  margin:40px auto;
+  margin:30px auto;
   border-radius:2%;
   box-shadow: 10px 13px 37px #000;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   text-align: center;
-
   
+ 
 }
+
 input{
 	width: calc(100% - 10px);
 	padding: 7px;
@@ -77,6 +78,7 @@ input{
 	margin-top: 8px;
 	font-size: 16px;
   border-radius: 1.5%;
+  
   
  
 
@@ -94,6 +96,17 @@ input{
   text-align: center;
 }
 
+#puntaje {
+  text-align:center;
+}
+
+#terminar{
+  text-align: center;
+}
+
+#es_hora{
+  font-size: 2.5rem;
+}
 
 input[type='submit']{
 	background-color: #48e;
