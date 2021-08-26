@@ -30,15 +30,19 @@ def estadistica(request):
     #ordenamos el diccionario    
     dic_ordenado = dict()
     dic_ordenado['usuario'] = dict()
-    mayor = 0
+    puntaje_mayor = 0
     while len(dic_jugadas['usuario']) > 0:
+        
         for k, v in dic_jugadas['usuario'].items():
-            if v[1] > mayor:
+            print(k,v)
+            if v[1] >= puntaje_mayor:
+                usuario_mayor = k
                 preguntas = v[0]
                 puntaje_mayor = v[1]
                 efectividad = v[2]
-        dic_ordenado['usuario'][k] = [preguntas, puntaje_mayor, efectividad]
-        del dic_jugadas['usuario'][k]   
+        dic_ordenado['usuario'][usuario_mayor] = [preguntas, puntaje_mayor, efectividad]
+        del dic_jugadas['usuario'][usuario_mayor]   
+        puntaje_mayor = 0
     print(dic_ordenado) 
 
     return render(request, 'estadistica.html', dic_ordenado)
