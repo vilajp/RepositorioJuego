@@ -4,17 +4,24 @@
 <head>
 	<title>PROVINCIALIZACION</title>
 	<link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
+	
 </head>
 <body>
 <header>
-	<section id="principal">
-		<ul>
-			<li class="item"><a href="#">Inicio</a></li>
-			<li class="item"><a href="#Como-Jugar">Como Jugar</a></li>
-			<li class="item"><a href="#Nosotros">Nosotros</a></li>
-			<li class="item"><a href="#Contacto">Contacto</a></li>
-		</ul>
-	</section>
+	<img id="logo"  src="{% static 'img/CHACO_CODE.png'%}" alt="logo">
+	
+	<div id="principal">
+		<nav>
+			<a href="#">Inicio</a>
+			<a href="#Como-Jugar">Como Jugar</a>
+			<a href="#Nosotros">Nosotros</a>
+			<a href="#Contacto">Contacto</a>
+			<a href="{% url 'partida'  %}">Partida</a>
+			<a href="{% url 'estadistica'  %}">Ranking Jugadores</a>
+		
+		</nav>
+			
+	</div>
   
 	<div style="margin-bottom: 100px;" class="login">
 		
@@ -25,12 +32,7 @@
 			<a href="{% url 'login' %}">LOGIN</a>
 		{% endif %}
 		</div>
-		<div style="margin-bottom: 100px;padding: 20px;" class="menu">
-			<a href="{% url 'partida'  %}"><h1>Partida</h1></a>
-		</div>
-		<div style="margin-bottom: 100px; padding: 20px;" class="menu">
-			<a href="{% url 'estadistica'  %}"><h1>Ranking Jugadores</h1></a>
-		</div>
+		
 	</header>
 
 
@@ -45,32 +47,32 @@
 
 {% endblock contenido %}
 
-<section id="Como-Jugar" class="section">
+
+	<section id="Como-Jugar" class="section">
+		Primero seleccionamos Partida, y accedemos a el Juego.
+		Aqui tienes una Pregunta y se te dan varias opciones, tienes que seleccionar la o las que consideres correctas.
+		Si acertaste obtendras 10 puntos.	
+		<p><a href="#principal">Ir al Principio</a></p>
+	</section>
+	
+	<section id="Nosotros" class="section">
+	   Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+	   Cum laudantium id, repudiandae optio ipsum accusamus sint at.
+	   Iusto autem facere atque distinctio, vero mollitia corrupti
+	   necessitatibus, numquam molestiae, deserunt porro!
+	
+	   <p><a href="#principal">Ir al Principio</a></p>
+	</section>
+	
+	<section id="Contacto" class="section">
 	Lorem, ipsum dolor sit amet consectetur adipisicing elit.
 	Cum laudantium id, repudiandae optio ipsum accusamus sint at.
 	Iusto autem facere atque distinctio, vero mollitia corrupti
 	necessitatibus, numquam molestiae, deserunt porro!
-
-	<p><a href="#principal">Ir al Principio</a></p>
-</section>
-
-<section id="Nosotros" class="section">
-   Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-   Cum laudantium id, repudiandae optio ipsum accusamus sint at.
-   Iusto autem facere atque distinctio, vero mollitia corrupti
-   necessitatibus, numquam molestiae, deserunt porro!
-
-   <p><a href="#principal">Ir al Principio</a></p>
-</section>
-
-<section id="Contacto" class="section">
-Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-Cum laudantium id, repudiandae optio ipsum accusamus sint at.
-Iusto autem facere atque distinctio, vero mollitia corrupti
-necessitatibus, numquam molestiae, deserunt porro!
-
- <p><a href="#principal">Ir al Principio</a></p>
-</section>
+	
+	 <p><a href="#principal">Ir al Principio</a></p>
+	</section>
+	
 
 </body>
 </html>
