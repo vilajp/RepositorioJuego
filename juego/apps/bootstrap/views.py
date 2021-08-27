@@ -16,3 +16,6 @@ def equipo(request):
 
 def contacto(request):
     return render(request, 'bootstrap/contacto.html')
+
+def detalle_portfolio(request):
+    return render(request, 'bootstrap/portfolio-details.html')

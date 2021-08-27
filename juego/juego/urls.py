@@ -38,6 +38,7 @@ urlpatterns = [
     path("equipo/",view_bootstrap.equipo,name='equipo'),
     path("masinfo/",view_bootstrap.masinfo,name='masinfo'),
     path("contacto/",view_bootstrap.contacto,name='contacto'),
+    path("detalle-portfolio/",view_bootstrap.detalle_portfolio,name='portfolio'),
 
 
 

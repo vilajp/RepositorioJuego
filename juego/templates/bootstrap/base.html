@@ -45,7 +45,7 @@
   <section id="topbar" class="d-flex align-items-center">
     <div class="container d-flex justify-content-center justify-content-md-between">
       <div class="contact-info d-flex align-items-center">
-        <i class="bi bi-envelope d-flex align-items-center"><a href="mailto:contact@example.com">contact@example.com</a></i>
+        <i class="bi bi-envelope d-flex align-items-center"><a href="mailto:contact@example.com">Grupo 8</a></i>
         <i class="bi bi-phone d-flex align-items-center ms-4"><span>0800-888-8888</span></i>
       </div>
       <div class="social-links d-none d-md-flex align-items-center">
@@ -61,7 +61,7 @@
     <div class="container d-flex justify-content-between align-items-center">
 
       <div class="logo">
-        <h1><a href="index.html">Grupo 8</a></h1>
+        <h1><a href="{% url 'principal' %}">Grupo 8</a></h1>
         <!-- Uncomment below if you prefer to use an image logo -->
         <!-- <a href="index.html"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
       </div>
@@ -78,13 +78,31 @@
 
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
+
+<!-- BOTON DEL USUARIO  </!-->
+            {% if user.is_authenticated %}
+
+    <div class="dropdown">
+     <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">{{user.username}}
+     <span class="caret"></span></button>
+     <ul class="dropdown-menu">
+       <li><a href="{% url 'logout' %}">LOGOUT</a></li>
+     </ul>
+   </div>
+   {% else %}
+   <a class="btn btn-primary" href="{% url 'login' %}" role="button">LOGIN</a>
+
+              {% endif %}
+
       </nav><!-- .navbar -->
+
 
     </div>
   </header><!-- End Header -->
 
   <div class="container">
   		<div class="text-center mt-5">
+        
   			{% block contenido %}
 
   			{% endblock contenido %}
@@ -104,7 +122,7 @@
           <div class="col-lg-3 col-md-6 footer-links">
             <h4>Enlaces útiles</h4>
             <ul>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Inicio</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Volver arriba</a></li>
               <li><i class="bx bx-chevron-right"></i> <a href="{% url 'registro' %}">Registrate</a></li>
               <li><i class="bx bx-chevron-right"></i> <a href="{% url 'estadistica' %}">Ranking</a></li>
             </ul>

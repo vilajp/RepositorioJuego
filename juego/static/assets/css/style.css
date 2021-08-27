@@ -29,14 +29,16 @@ h1, h2, h3, h4, h5, h6 {
 
 form {
 
-  background:#1ab188;
+  background: #545454;
+  color:  white;
   padding: 30px;
   max-width:600px;
   margin:30px auto;
   border-radius:2%;
   box-shadow: 10px 13px 37px #000;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  text-align: center;
+  text-align: justify;
+
 
 
 }
@@ -1149,7 +1151,7 @@ section {
 }
 
 .portfolio-details .portfolio-details-slider img {
-  width: 100%;
+  width: 50%;
 }
 
 .portfolio-details .portfolio-details-slider .swiper-pagination {
