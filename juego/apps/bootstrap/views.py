@@ -8,6 +8,9 @@ def principal(request):
 def postales(request):
     return render(request, 'bootstrap/postales.html')
 
+def masinfo(request):
+    return render(request, 'bootstrap/masinfo.html')
+
 def equipo(request):
     return render(request, 'bootstrap/equipo.html')
 

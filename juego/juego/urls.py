@@ -36,6 +36,8 @@ urlpatterns = [
     path('estadistica/',view_estadistica.estadistica, name = 'estadistica'),
     path("postales/",view_bootstrap.postales,name='postales' ),
     path("equipo/",view_bootstrap.equipo,name='equipo'),
+    path("masinfo/",view_bootstrap.masinfo,name='masinfo'),
+
 
 
     #path("home/",views.home,name='home' ),
