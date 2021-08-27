@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'apps.usuarios',
     'apps.partida',
     'apps.registro',
+    
 ]
 
 MIDDLEWARE = [
@@ -61,6 +62,8 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'juego.urls'
+
+
 
 TEMPLATES = [
     {

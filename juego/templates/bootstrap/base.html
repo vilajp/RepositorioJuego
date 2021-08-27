@@ -75,24 +75,18 @@
           <li><a href="{% url 'equipo' %}">Equipo</a></li>
           <li><a href="{% url 'contacto' %}">Contacto</a></li>
           <li><a href="{% url 'masinfo' %}">Mas del Chaco</a></li>
+            {% if user.is_authenticated %}
+          <li> <a>{{user.username}}</a></li> 
+          <li><a href="{% url 'logout' %}">Logout</a></li>
+            {% else %}
+          <li><a href="{% url 'logout' %}">Login</a></li>
 
+              {% endif %}
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
 
 <!-- BOTON DEL USUARIO  </!-->
-            {% if user.is_authenticated %}
-
-    <div class="dropdown">
-     <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">{{user.username}}
-     <span class="caret"></span></button>
-     <ul class="dropdown-menu">
-       <li><a href="{% url 'logout' %}">LOGOUT</a></li>
-     </ul>
-   </div>
-   {% else %}
-   <a class="btn btn-primary" href="{% url 'login' %}" role="button">LOGIN</a>
-
-              {% endif %}
+            
 
       </nav><!-- .navbar -->
 

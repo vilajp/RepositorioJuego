@@ -1,13 +1,17 @@
 {% extends 'bootstrap/base.html' %}
+{% load crispy_forms_tags %}
 {% load static %}
+
 
 
 
 {% block contenido %}
 
-<form method="POST">{% csrf_token %}
-    {{form.as_p}}
-    <br>
+{% csrf_token %}
+
+<form method="POST" class="uniForm" >
+    {{form|crispy}}
+    
 
 
     <input type="submit" name="" value="REGISTRAR">
