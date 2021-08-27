@@ -1,4 +1,4 @@
-{% extends 'base.html' %}
+{% extends './bootstrap/base.html' %}
 {% load static %}
 
 
@@ -6,23 +6,21 @@
 {% block contenido %}
 <div id="pregunta">
 
-    <h2 id="puntaje" >Puntaje: {{puntaje}}</h2>   
+    <h2 id="puntaje" >Puntaje: {{puntaje}}</h2>
     <a id="terminar" href="{% url 'borrar'  %}"><h2>TERMINAR EL JUEGO</h2></a>
   <h2>{{pregunta}}</h2>
 </div>
   <form id = "preguntero" action="{% url 'partida'  %}" method="post">
     {% csrf_token %}
-    
+
     {% for r in respuestas %}
       <!-- <input type="checkbox" name="respuesta" value="{{ r }}">{{ r.texto }}<br> -->
-      
+
       <input type="checkbox" name="respuesta" value="{{ r.id }}_{{ r.pregunta_id }}">{{ r.texto }}
-    
+
       {% endfor %}
-    
+
     <input type="submit" value="LISTO">
   </form>
-  	
+
 {% endblock contenido %}
-
-

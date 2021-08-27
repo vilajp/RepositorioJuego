@@ -11,7 +11,7 @@ from django.contrib.auth.decorators import login_required
 @login_required
 def comienzo(request):
 
-    
+
 
     if request.method == 'GET':
         respuestas = list()
@@ -20,15 +20,15 @@ def comienzo(request):
         pc = PreguntaContestada.objects.filter(usuario = u.id)
 
         lista_pc = [x.pregunta_id for x in pc]
-        
+
         j = Juego.objects.latest('id')
 
         puntaje = j.puntaje
         lista_preguntas = Pregunta.objects.all()
         cantidad = len(lista_preguntas)
-        while True: 
+        while True:
             una_id = random.randint(1,cantidad)
-            
+
             if una_id not in lista_pc:
                 una_pregunta = Pregunta.objects.get(id=una_id)
                 break
@@ -44,11 +44,11 @@ def comienzo(request):
     elif request.method == 'POST':
 
         lista_respuestas = list()
-        
+
         for cada_respuesta in request.POST.getlist('respuesta'):
             una_respuesta_id, id_pregunta = cada_respuesta.split("_")
             lista_respuestas.append(int(una_respuesta_id))
-        
+
         respuestas_correctas = Respuesta.objects.all().filter(pregunta = id_pregunta, es_correcta=1)
         lista_correctas = [x.id for x in respuestas_correctas]
 
@@ -57,7 +57,7 @@ def comienzo(request):
 
         u = Usuario.objects.get(username=str(request.user))
         j = Juego.objects.latest('id')
-        j.cantidad_preguntas_contestadas += 1 
+        j.cantidad_preguntas_contestadas += 1
 
         if lista_correctas == lista_respuestas:
 
@@ -65,22 +65,22 @@ def comienzo(request):
             j.usuario = u
             j.save()
 
-        p = Pregunta.objects.get(id = id_pregunta)        
+        p = Pregunta.objects.get(id = id_pregunta)
         PreguntaContestada(usuario=u, pregunta=p).save()
 
         return redirect('partida')
-        
 
 
-        print(lista_correctas)        
+
+        print(lista_correctas)
         print(lista_respuestas)
 
-        
-                              
+
+
         # respuesta, id_pregunta = request.POST.get("respuesta").split("_")
         # una_respuesta = RespuestaCorrecta.objects.get(pregunta_id = id_pregunta)
         #
-        # 
+        #
         # return redirect('partida')
 
 @login_required

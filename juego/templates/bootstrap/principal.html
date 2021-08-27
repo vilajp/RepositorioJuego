@@ -1,0 +1,61 @@
+{% extends 'bootstrap/base.html' %}
+
+{% block contenido %}
+<!-- ======= Hero Section ======= -->
+  <section id="hero">
+    <div class="hero-container">
+      <div id="heroCarousel" data-bs-interval="5000" class="carousel slide carousel-fade" data-bs-ride="carousel">
+
+        <ol class="carousel-indicators" id="hero-carousel-indicators"></ol>
+
+        <div class="carousel-inner" role="listbox">
+
+          <!-- Slide 1 -->
+
+          <div class="carousel-item active" style="background: url(/static/assets/img/slide/slide-1.jpg)">
+            <div class="carousel-container">
+              <div class="carousel-content">
+                <h2 class="animate__animated animate__fadeInDown">70 años de la Provincialización del <span>Chaco</span></h2>
+                <p class="animate__animated animate__fadeInUp">Este año nuestra provincia cumple 70 años y ¡HAY QUE FESTEJAR!</p>
+                <a href="" class="btn-get-started animate__animated animate__fadeInUp">Leer mas</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Slide 2 -->
+          <div class="carousel-item" style="background: url(assets/img/slide/slide-2.jpg)">
+            <div class="carousel-container">
+              <div class="carousel-content">
+                <h2 class="animate__animated fanimate__adeInDown"> ¿Querés poner a prueba tus conocimientos sobre <span>El Chaco?</span></h2>
+                <p class="animate__animated animate__fadeInUp">¡Dale Animate! Siempre se puede conocer más sobre nuestra provincia </p>
+                <a href="" class="btn-get-started animate__animated animate__fadeInUp">Ingresá para Jugar</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Slide 3 -->
+          <div class="carousel-item" style="background: url(assets/img/slide/slide-3.jpg)">
+            <div class="carousel-container">
+              <div class="carousel-content">
+                <h2 class="animate__animated animate__fadeInDown">Otras <span>Cosas</span></h2>
+                <p class="animate__animated animate__fadeInUp">...</p>
+                <a href="" class="btn-get-started animate__animated animate__fadeInUp">otro enlace</a>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <a class="carousel-control-prev" href="#heroCarousel" role="button" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon bi bi-chevron-left" aria-hidden="true"></span>
+        </a>
+
+        <a class="carousel-control-next" href="#heroCarousel" role="button" data-bs-slide="next">
+          <span class="carousel-control-next-icon bi bi-chevron-right" aria-hidden="true"></span>
+        </a>
+
+      </div>
+    </div>
+  </section><!-- End Hero -->
+
+{% endblock contenido %}

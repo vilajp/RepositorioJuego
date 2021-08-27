@@ -1,0 +1,15 @@
+{% extends 'bootstrap/base.html' %}
+{% load static %}
+
+
+
+{% block contenido %}
+
+<form method="POST">{% csrf_token %}
+    {{form.as_p}}
+    <br>
+
+
+    <input type="submit" name="" value="REGISTRAR">
+
+{% endblock contenido %}

@@ -1,4 +1,4 @@
-{% extends 'base.html' %}
+{% extends './bootstrap/base.html' %}
 
 {% block contenido %}
 
@@ -6,7 +6,7 @@
 		{{form.errors}}
 		<input type="text" name="username" placeholder="USUARIO">
 		<input type="password" name="password" placeholder="CONTRASEÑA">
-		
+
 		<input type="submit" name="" value="LOGIN">
         <a href="{%url 'registro'%}">Registrese</a>
 

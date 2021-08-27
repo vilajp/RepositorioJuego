@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">  
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PARTIDA</title>
+   
+</head>
+<body>
+
+    <div id="titulo"><h1>PARTIDA G8</h1></div>
+     <div id="pregunta">
+        <h2>{{pregunta}}</h2>
+
+     </div>
+   
+
+    
+    <form action="{% url 'partida'  %}" method="post">
+        {% csrf_token %}
+           
+           
+                <h1>
+                    {{ pregunta }}
+                </h1>
+              
+               
+                <p>
+                <input type="radio" name="respuesta"  value="{{ respuesta }}"> {{ respuesta }}<br>
+
+               
+
+                <input type="radio" name="respuesta"  value="{{ erronea }}">{{ incorrecta }}<br>
+
+               
+                </p>
+     
+           
+            <input type="submit" value="LISTO">
+    </form>
+   
+
+</body>
+</html>

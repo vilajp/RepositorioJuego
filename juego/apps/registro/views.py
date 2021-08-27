@@ -17,5 +17,5 @@ def register(request):
             return redirect('home')
     else:
         form = RegistroFormulario()
-    
+
     return render(request, 'registro.html', {'form':form})

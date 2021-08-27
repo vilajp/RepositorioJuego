@@ -1,8 +1,5 @@
-{% extends 'base.html' %}
+{% extends './bootstrap/base.html' %}
 {% load static %}
-{% load mathfilters %}
-
-
 
 {% block contenido %}
 
@@ -10,10 +7,10 @@
 <br>
 <ol>
 {% for linea, detalle in usuario.items %}
-    
+
     <li>{{linea}}: {{detalle.0}} {{detalle.1}} efectividad: {{detalle.2}}</li>
-   
+
 {% endfor %}
-</ol>	
+</ol>
 
 {% endblock contenido %}

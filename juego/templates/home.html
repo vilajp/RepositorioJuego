@@ -1,4 +1,4 @@
-{% extends 'base.html' %}
+{% extends './bootstrap/base.html' %}
 {% load static %}
 
 
@@ -6,7 +6,8 @@
 {% block contenido %}
 <div class="principal">
 		<h2 id='es_hora'>Es hora de probar cuanto sabes de tu provincia!</h2>
+		<a class="btn btn-primary" href="{% url 'partida' %}" role="button">¡QUIERO COMENZAR A JUGAR!</a>
 </div>
 
-	
+
 {% endblock contenido %}

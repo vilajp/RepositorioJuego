@@ -21,10 +21,12 @@ from apps.registro import views as registro
 from apps.estadisticas import views as view_estadistica
 from django.contrib.auth import views as auth
 
-
+#BOOTSTRAP IMPORT
+from apps.bootstrap import views as view_bootstrap
 
 urlpatterns = [
-    path("",views.home,name='home' ),
+    path("",view_bootstrap.principal,name='principal' ),
+    path("home/",views.home,name='home' ),
     path('borrar/', views.borrar, name = "borrar"),
     path('admin/', admin.site.urls),
     path('partida/',views.comienzo,name="partida"),
@@ -32,8 +34,11 @@ urlpatterns = [
     path('login/',auth.LoginView.as_view(template_name = 'login.html'),name = 'login'),
     path('logout/',auth.LogoutView.as_view(),name = 'logout'),
     path('estadistica/',view_estadistica.estadistica, name = 'estadistica'),
+    path("postales/",view_bootstrap.postales,name='postales' ),
+
+
+    #path("home/",views.home,name='home' ),
 
 
 
-    
 ]
