@@ -14,3 +14,5 @@ def masinfo(request):
 def equipo(request):
     return render(request, 'bootstrap/equipo.html')
 
+def contacto(request):
+    return render(request, 'bootstrap/contacto.html')

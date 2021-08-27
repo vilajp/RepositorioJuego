@@ -37,6 +37,7 @@ urlpatterns = [
     path("postales/",view_bootstrap.postales,name='postales' ),
     path("equipo/",view_bootstrap.equipo,name='equipo'),
     path("masinfo/",view_bootstrap.masinfo,name='masinfo'),
+    path("contacto/",view_bootstrap.contacto,name='contacto'),
 
 
 
