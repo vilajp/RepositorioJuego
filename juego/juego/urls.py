@@ -35,6 +35,7 @@ urlpatterns = [
     path('logout/',auth.LogoutView.as_view(),name = 'logout'),
     path('estadistica/',view_estadistica.estadistica, name = 'estadistica'),
     path("postales/",view_bootstrap.postales,name='postales' ),
+    path("equipo/",view_bootstrap.equipo,name='equipo'),
 
 
     #path("home/",views.home,name='home' ),
