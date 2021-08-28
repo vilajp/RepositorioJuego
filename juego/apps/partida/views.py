@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
+import math
 
-from apps.partida.models import Pregunta, Respuesta, PreguntaContestada, Juego
+from apps.partida.models import Pregunta, Respuesta, PreguntaContestada, Juego, Categoria
 from apps.usuarios.models import Usuario
 import random
 from django.http import HttpResponse
@@ -16,29 +17,49 @@ def comienzo(request):
     if request.method == 'GET':
         respuestas = list()
         u = Usuario.objects.get(username=str(request.user))
-
+        
         pc = PreguntaContestada.objects.filter(usuario = u.id)
 
         lista_pc = [x.pregunta_id for x in pc]
+      
 
         j = Juego.objects.latest('id')
 
         puntaje = j.puntaje
         lista_preguntas = Pregunta.objects.all()
         cantidad = len(lista_preguntas)
-        while True:
+        
+        if len(lista_pc)>0:
+            numero = int(puntaje)/100
+            nivel = str(math.floor(numero))
+        else:
+            nivel = "1"
+
+
+        mensaje = ""
+
+        while cantidad > len(lista_pc):
             una_id = random.randint(1,cantidad)
 
             if una_id not in lista_pc:
                 una_pregunta = Pregunta.objects.get(id=una_id)
+                categoria_pregunta = Categoria.objects.get(id = una_pregunta.categoria.pk)
                 break
+        else:
+            mensaje = "Ya termino de contestar todas las preguntas"
 
         # Se obtienen las respuestas
         for r in Respuesta.objects.all():
             if r.pregunta_id == una_pregunta.pk:
                 respuestas.append(r)
 
-        context = {"pregunta":una_pregunta,"respuestas":respuestas, "puntaje":puntaje}
+        context = {"pregunta":una_pregunta,
+                "respuestas":respuestas, 
+                "puntaje":puntaje,
+                "mensaje":mensaje, 
+                "categoria":categoria_pregunta.nombre,
+                "nivel":nivel}
+
         return render(request,"partida.html",context)
 
     elif request.method == 'POST':

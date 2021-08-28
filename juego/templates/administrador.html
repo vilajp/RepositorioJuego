@@ -12,15 +12,17 @@
 
     <label for="categoria">Seleccione una categoria:</label>
     <br>
-    
+  
+  <div>
   <select name="categoria" id="categorias" >
       {%for cada_categoria in categorias%}
             <option value="{{cada_categoria.nombre}}_{{cada_categoria.id}}">{{cada_categoria.nombre}}</option>
       {%endfor%}
   </select>
+</div>
   <br>
   <label for="respuestas">Ingrese las respuestas una debajo de la otra:</label>
-  <textarea placeholder = "Coloque * al principio de la respuesta correcta" rows="10" cols="70" id="respuesta" name="respuesta"  
+  <textarea placeholder="Coloque * al principio de la respuesta correcta" rows="10" cols="70" id="respuesta" name="respuesta"  
        required= True>
   </textarea>
 <br>

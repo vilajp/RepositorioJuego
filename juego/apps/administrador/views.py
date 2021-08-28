@@ -23,6 +23,9 @@ def admin(request):
         
         
         alguna_correcta = False
+
+        print(respuestas)
+        
         for cada_respuesta in respuestas:
 
             print(cada_respuesta)

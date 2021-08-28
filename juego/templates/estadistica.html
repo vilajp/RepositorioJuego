@@ -5,12 +5,18 @@
 
 <h1>Ranking Jugadores por puntaje acumulado</h1><br>
 <br>
-<ol>
+<table>
 {% for linea, detalle in usuario.items %}
 
-    <li>{{linea}}: {{detalle.0}} {{detalle.1}} efectividad: {{detalle.2}}</li>
+    <tr>
+        <td>{{forloop.counter}}--</td>
+        <td>{{linea}}:</td>
+        <td>{{detalle.0}}</td>
+        <td>{{detalle.1}}</td> 
+        <td>efectividad: {{detalle.2}}</td> 
+    </tr>
 
 {% endfor %}
-</ol>
+</table>
 
 {% endblock contenido %}
