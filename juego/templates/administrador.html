@@ -1,1 +1,32 @@
 {% extends './bootstrap/base.html' %}
+{% load static %}
+
+{% block contenido %}
+
+<form action="{% url 'administrador' %}" method="post" id="admin">
+    {% csrf_token %}
+
+    <label for="fname">Pregunta:</label>
+    <input type="text" id="fname" name="pregunta" size= "70" required= True>
+    <br>
+
+    <label for="categoria">Seleccione una categoria:</label>
+    <br>
+    
+  <select name="categoria" id="categorias" >
+      {%for cada_categoria in categorias%}
+            <option value="{{cada_categoria.nombre}}_{{cada_categoria.id}}">{{cada_categoria.nombre}}</option>
+      {%endfor%}
+  </select>
+  <br>
+  <label for="respuestas">Ingrese las respuestas una debajo de la otra:</label>
+  <textarea rows="10" cols="70" id="respuesta" name="respuesta" required= True>
+  </textarea>
+<br>
+  <input type="submit" value="GUARDAR">
+  </form>
+  <br>
+  <h1>{{mensaje}}</h1>
+  
+
+{% endblock contenido %}

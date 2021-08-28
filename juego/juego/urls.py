@@ -19,6 +19,7 @@ from apps.partida import views
 from apps.registro.forms import RegistroFormulario
 from apps.registro import views as registro
 from apps.estadisticas import views as view_estadistica
+from apps.administrador import views as view_admin
 from django.contrib.auth import views as auth
 
 #BOOTSTRAP IMPORT
@@ -29,6 +30,7 @@ urlpatterns = [
     path("home/",views.home,name='home' ),
     path('borrar/', views.borrar, name = "borrar"),
     path('admin/', admin.site.urls),
+    path('administrador/',view_admin.admin,name="administrador"),
     path('partida/',views.comienzo,name="partida"),
     path('registro/', registro.register, name = 'registro' ),
     path('login/',auth.LoginView.as_view(template_name = 'login.html'),name = 'login'),

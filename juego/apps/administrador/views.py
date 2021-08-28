@@ -1,3 +1,38 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from django.contrib.admin.views.decorators import staff_member_required
+from apps.partida.models import Pregunta, Respuesta, Categoria
 
-# Create your views here.
+@staff_member_required
+def admin(request):
+    if request.method == 'GET':
+        categorias = Categoria.objects.all()
+        context = dict()
+        context['categorias']= categorias
+        context['mensaje']= ""
+
+        return render(request, 'administrador.html', context)
+
+    elif request.method == 'POST':
+        
+        pregunta = request.POST.get('pregunta')
+        categoria , categoria_id = request.POST.get('categoria').split('_')
+        respuestas = request.POST.getlist('respuestas')
+
+        objeto_categoria = Categoria.objects.get(id = int(categoria_id))
+
+        nueva_pregunta = Pregunta(texto = pregunta, categoria = objeto_categoria)
+        nueva_pregunta.save()
+
+        for cada_respuesta in respuestas:
+        if cada_respuesta[-1]=="*":
+                nueva_respuesta = Respuesta(texto =cada_respuesta[2:-3].strip(), es_correcta =True, pregunta = todas_las_preguntas)
+            else:
+                nueva_respuesta = Respuesta(texto =cada_respuesta[2:].strip(), es_correcta =False, pregunta = todas_las_preguntas)
+            
+            nueva_respuesta.save()
+
+        return redirect('administrador')
+
+
+
+
