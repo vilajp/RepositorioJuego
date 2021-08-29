@@ -65,31 +65,33 @@ def comienzo(request):
     elif request.method == 'POST':
 
         lista_respuestas = list()
+        try:
+            for cada_respuesta in request.POST.getlist('respuesta'):
+                una_respuesta_id, id_pregunta = cada_respuesta.split("_")
+                lista_respuestas.append(int(una_respuesta_id))
 
-        for cada_respuesta in request.POST.getlist('respuesta'):
-            una_respuesta_id, id_pregunta = cada_respuesta.split("_")
-            lista_respuestas.append(int(una_respuesta_id))
+            respuestas_correctas = Respuesta.objects.all().filter(pregunta = id_pregunta, es_correcta=1)
+            lista_correctas = [x.id for x in respuestas_correctas]
 
-        respuestas_correctas = Respuesta.objects.all().filter(pregunta = id_pregunta, es_correcta=1)
-        lista_correctas = [x.id for x in respuestas_correctas]
+            lista_correctas.sort()
+            lista_respuestas.sort()
 
-        lista_correctas.sort()
-        lista_respuestas.sort()
+            u = Usuario.objects.get(username=str(request.user))
+            j = Juego.objects.latest('id')
+            j.cantidad_preguntas_contestadas += 1
 
-        u = Usuario.objects.get(username=str(request.user))
-        j = Juego.objects.latest('id')
-        j.cantidad_preguntas_contestadas += 1
+            if lista_correctas == lista_respuestas:
 
-        if lista_correctas == lista_respuestas:
+                j.puntaje +=10
+                j.usuario = u
+                j.save()
 
-            j.puntaje +=10
-            j.usuario = u
-            j.save()
-
-        p = Pregunta.objects.get(id = id_pregunta)
-        PreguntaContestada(usuario=u, pregunta=p).save()
-
-        return redirect('partida')
+            p = Pregunta.objects.get(id = id_pregunta)
+            PreguntaContestada(usuario=u, pregunta=p).save()
+        except:
+            print("No se cargo una pregunta")
+        finally:
+            return redirect('partida')
 
 
 

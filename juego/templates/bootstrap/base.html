@@ -45,8 +45,8 @@
   <section id="topbar" class="d-flex align-items-center">
     <div class="container d-flex justify-content-center justify-content-md-between">
       <div class="contact-info d-flex align-items-center">
-        <img class="logo-chaco" src="{% static 'assets/img/CHACO_CODE.ico' %}" alt="">
-        
+        <a href="{% url 'equipo' %}"><img class="logo-chaco" src="{% static 'assets/img/CHACO_CODE.ico' %}" alt="">
+        </a>        
       </div>
       <div class="social-links d-none d-md-flex align-items-center">
         <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
@@ -65,11 +65,11 @@
         <!-- Uncomment below if you prefer to use an image logo -->
         <!-- <a href="index.html"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
       </div>
-
+      <a id="navbar" href="{%url 'administrador'%}">Admin</a>
+     
       <nav id="navbar" class="navbar">
         <ul>
-          <li><a class="active" href="{% url 'principal' %}">Inicio</a></li>
-          <li><a href="{% url 'registro' %}">Registrate</a></li>
+          <li><a href="{% url 'principal' %}">Inicio</a></li>
           <li><a href="{% url 'estadistica' %}">Ranking</a></li>
           <li><a href="{% url 'postales' %}">Postales</a></li>
           <li><a href="{% url 'equipo' %}">Equipo</a></li>
@@ -79,6 +79,7 @@
           <li> <a>{{user.username}}</a></li> 
           <li><a href="{% url 'logout' %}">Logout</a></li>
             {% else %}
+          <li><a href="{% url 'registro' %}">Registrate</a></li>
           <li><a href="{% url 'logout' %}">Login</a></li>
 
               {% endif %}

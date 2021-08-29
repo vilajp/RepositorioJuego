@@ -2,16 +2,17 @@
 {% load static %}
 
 {% block contenido %}
+<h1>Aqui podra ingresar nuevas preguntas, cuando ingrese las respuestas presione Enter al final de cada respuesta</h1>
 
 <form action="{% url 'administrador' %}" method="post" id="admin">
     {% csrf_token %}
 
     <label for="fname">Pregunta:</label>
     <input type="text" id="fname" name="pregunta" size= "70" required= True>
-    <br>
+    
 
     <label for="categoria">Seleccione una categoria:</label>
-    <br>
+    
   
   <div>
   <select name="categoria" id="categorias" >
@@ -20,11 +21,9 @@
       {%endfor%}
   </select>
 </div>
-  <br>
-  <label for="respuestas">Ingrese las respuestas una debajo de la otra:</label>
-  <textarea placeholder="Coloque * al principio de la respuesta correcta" rows="10" cols="70" id="respuesta" name="respuesta"  
-       required= True>
-  </textarea>
+  
+  <label for="respuesta">Ingrese las respuestas una debajo de la otra:</label>
+  <textarea placeholder="Coloque * al principio de la respuesta correcta" rows="10" cols="70" id="respuesta" name="respuesta" required= True></textarea>
 <br>
   <input type="submit" value="GUARDAR">
   </form>
