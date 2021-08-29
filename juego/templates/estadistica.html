@@ -2,6 +2,29 @@
 {% load static %}
 
 {% block contenido %}
+<style>
+    table{
+        margin-left: auto;
+        margin-right: auto;
+    }
+   
+   tr{
+      
+        border-width: 0.10cm;
+        border-style: solid;
+        border-color: #6495ED;
+  
+    }
+    td{
+        border-width: 0.10cm;
+        border-style: solid;
+    }
+    h1{
+
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+    }
+</style>
 
 <h1>Ranking Jugadores por puntaje acumulado</h1><br>
 <br>
@@ -9,11 +32,11 @@
 {% for linea, detalle in usuario.items %}
 
     <tr>
-        <td>{{forloop.counter}}--</td>
-        <td>{{linea}}:</td>
-        <td>{{detalle.0}}</td>
-        <td>{{detalle.1}}</td> 
-        <td>efectividad: {{detalle.2}}</td> 
+        <td><h1>{{forloop.counter}}-  </h1></td>
+        <td><h1>{{linea}}:</h1></td>
+        <td><h1>{{detalle.0}}</h1></td>
+        <td><h1>{{detalle.1}}</h1></td> 
+        <td><h1>efectividad: {{detalle.2}}</h1></td> 
     </tr>
 
 {% endfor %}

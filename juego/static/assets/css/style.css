@@ -29,7 +29,7 @@ h1, h2, h3, h4, h5, h6 {
 
 form {
 
-  background: #545454;
+  background: #6495ED;
   color:  white;
   padding: 30px;
   max-width:600px;
@@ -41,6 +41,11 @@ form {
 
 
 
+}
+table{
+  border-width: 0.5cm;
+  border-style: solid;
+  border-color: #6495ED;
 }
 
 /*--------------------------------------------------------------
@@ -374,6 +379,7 @@ form {
 .navbar-mobile .dropdown > .dropdown-active {
   display: block;
 }
+
 
 
 
