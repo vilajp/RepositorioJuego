@@ -48,6 +48,8 @@ INSTALLED_APPS = [
     'apps.usuarios',
     'apps.partida',
     'apps.registro',
+    'apps.administrador',
+    'apps.estadisticas',
     
 ]
 

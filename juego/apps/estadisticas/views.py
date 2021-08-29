@@ -19,7 +19,8 @@ def estadistica(request):
                 acumulador_puntaje += cada_jugada.puntaje
 
             if acumulador_preguntas != 0:
-                efectividad = ((acumulador_puntaje/10)/acumulador_preguntas)*100
+                efectividad = int(((acumulador_puntaje/10)/acumulador_preguntas)*100)
+
 
             dic_jugadas['usuario'][cada_usuario.username] = [acumulador_preguntas, acumulador_puntaje,efectividad]
         print(dic_jugadas)
