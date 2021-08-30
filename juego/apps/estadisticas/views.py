@@ -16,13 +16,13 @@ def estadistica(request):
         for cada_jugada in j:
             if cada_usuario.id == cada_jugada.usuario_id:
                 acumulador_preguntas += cada_jugada.cantidad_preguntas_contestadas
-                acumulador_puntaje += cada_jugada.puntaje
+                acumulador_puntaje += int(cada_jugada.puntaje/10)
 
             if acumulador_preguntas != 0:
-                efectividad = int(((acumulador_puntaje/10)/acumulador_preguntas)*100)
+                efectividad = int(((acumulador_puntaje)/acumulador_preguntas)*100)
 
-
-            dic_jugadas['usuario'][cada_usuario.username] = [acumulador_preguntas, acumulador_puntaje,efectividad]
+            total_puntaje = acumulador_puntaje *10
+            dic_jugadas['usuario'][cada_usuario.username] = [acumulador_preguntas, acumulador_puntaje,efectividad, total_puntaje]
         print(dic_jugadas)
         acumulador_preguntas = 0
         acumulador_puntaje = 0
@@ -41,7 +41,8 @@ def estadistica(request):
                 preguntas = v[0]
                 puntaje_mayor = v[1]
                 efectividad = v[2]
-        dic_ordenado['usuario'][usuario_mayor] = [preguntas, puntaje_mayor, efectividad]
+                total_puntaje = v[3]
+        dic_ordenado['usuario'][usuario_mayor] = [preguntas, puntaje_mayor, efectividad, total_puntaje]
         del dic_jugadas['usuario'][usuario_mayor]
         puntaje_mayor = 0
     print(dic_ordenado)

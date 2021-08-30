@@ -79,15 +79,17 @@ def comienzo(request):
             u = Usuario.objects.get(username=str(request.user))
             j = Juego.objects.latest('id')
             j.cantidad_preguntas_contestadas += 1
-
+            
             if lista_correctas == lista_respuestas:
 
                 j.puntaje +=10
                 j.usuario = u
-                j.save()
+            
+            j.save()
 
             p = Pregunta.objects.get(id = id_pregunta)
-            PreguntaContestada(usuario=u, pregunta=p).save()
+            pc= PreguntaContestada(usuario=u, pregunta=p)
+            pc.save()
         except:
             print("No se cargo una pregunta")
         finally:
