@@ -4,6 +4,15 @@
 
 
 {% block contenido %}
+<style>
+  div{
+  padding-top: 15px;
+  padding-bottom: 20px;
+  
+}
+
+</style>
+
 <div id="pregunta">
 
     <h2 id="puntaje" >Puntaje: {{puntaje}}     Nivel: {{nivel}}</h2>
@@ -26,5 +35,9 @@
     
     <input type="submit" value="LISTO">
   </form>
-  <a id="terminar" class="btn btn-success" href="{% url 'borrar'  %}" role="button" ><h3>TERMINAR EL JUEGO</h3></a>
+  <div id="terminar-juego">
+    <a id="terminar" class="btn btn-success" href="{% url 'borrar'  %}" role="button" >TERMINAR EL JUEGO</a>
+
+  </div>
+  
 {% endblock contenido %}
