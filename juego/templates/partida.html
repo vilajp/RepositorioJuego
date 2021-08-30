@@ -19,7 +19,8 @@
     {% for r in respuestas %}
       <!-- <input type="checkbox" name="respuesta" value="{{ r }}">{{ r.texto }}<br> -->
     
-      <label></label><input type="checkbox" name="respuesta" value="{{ r.id }}_{{ r.pregunta_id }}">{{r.texto}}</label>
+      <input type="checkbox" name="respuesta" value="{{ r.id }}_{{ r.pregunta_id }}"><br>
+      <label for="">{{r.texto}}</label>
     
       {% endfor %}
     

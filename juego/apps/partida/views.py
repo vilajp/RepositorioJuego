@@ -31,7 +31,7 @@ def comienzo(request):
         
         if len(lista_pc)>0:
             numero = int(puntaje)/100
-            nivel = str(math.floor(numero))
+            nivel = str(math.floor(numero)+1)
         else:
             nivel = "1"
 
