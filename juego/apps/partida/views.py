@@ -79,17 +79,24 @@ def comienzo(request):
             u = Usuario.objects.get(username=str(request.user))
             j = Juego.objects.latest('id')
             j.cantidad_preguntas_contestadas += 1
+
+            p = Pregunta.objects.get(id = id_pregunta)
             
             if lista_correctas == lista_respuestas:
 
                 j.puntaje +=10
                 j.usuario = u
+                pc= PreguntaContestada(usuario=u, pregunta=p, correcta=True)
+
+            else:
+
+                pc= PreguntaContestada(usuario=u, pregunta=p)
             
             j.save()
-
-            p = Pregunta.objects.get(id = id_pregunta)
-            pc= PreguntaContestada(usuario=u, pregunta=p)
             pc.save()
+            
+            
+            
         except:
             print("No se cargo una pregunta")
         finally:
@@ -110,19 +117,21 @@ def comienzo(request):
 
 @login_required
 def home(request):
+    return render(request, 'home.html')
+
+def creo_juego(request):
     j = Juego.objects.filter(usuario = request.user)
 
 
     j = Juego(usuario=request.user)
     j.save()
+    return redirect('partida')
 
-    return render(request, 'home.html')
-
-
+@login_required
 def borrar(request):
 
     u = Usuario.objects.get(username=str(request.user))
 
     PreguntaContestada.objects.filter(usuario_id=u.id).delete()
 
-    return render(request, 'home.html')
+    return redirect('creo-juego')

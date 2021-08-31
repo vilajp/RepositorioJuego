@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from apps.partida.models import Juego
+from apps.partida.models import Juego, PreguntaContestada, Pregunta, Respuesta
 from apps.usuarios.models import Usuario
 # Create your views here.
 
@@ -48,3 +48,53 @@ def estadistica(request):
     print(dic_ordenado)
 
     return render(request, 'estadistica.html', dic_ordenado)
+
+def resultados_juego(request):
+    
+    u = Usuario.objects.get(username=str(request.user))
+    preguntas_contestadas = PreguntaContestada.objects.filter(usuario_id=u.id)
+
+
+    preguntas_correctas = PreguntaContestada.objects.filter(correcta=True, usuario_id=u.id)
+
+    
+    
+    informe_juego= dict()
+    informe_juego['resultados']= dict()
+    informe_juego['cantidad']= len(preguntas_contestadas)
+    informe_juego['correctas'] = len(preguntas_correctas)
+
+
+    for cada_pregunta_contestada in preguntas_contestadas:
+
+        respuestas_correctas = Respuesta.objects.filter(pregunta_id = cada_pregunta_contestada.pregunta_id, es_correcta =True)
+
+        print(respuestas_correctas)
+
+        una_pregunta = Pregunta.objects.get(id = cada_pregunta_contestada.pregunta_id)
+
+        informe_juego['resultados'][una_pregunta.texto]=list()
+
+        textos_respuestas_correctas = [x.texto for x in respuestas_correctas]
+        
+        print(textos_respuestas_correctas)
+
+
+        if cada_pregunta_contestada.correcta:
+
+            informe_juego['resultados'][una_pregunta.texto].append("correcta")
+            
+        else:
+            
+            informe_juego['resultados'][una_pregunta.texto].append("incorrecta")
+            
+        informe_juego['resultados'][una_pregunta.texto].append(textos_respuestas_correctas)
+    context = informe_juego
+
+    return render(request, "resultados.html", context)
+
+
+            
+
+
+

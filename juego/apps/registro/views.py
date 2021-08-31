@@ -14,7 +14,7 @@ def register(request):
             print(form.cleaned_data)
 
             form.save()
-            return redirect('home')
+            return redirect('login')
     else:
         form = RegistroFormulario()
 
