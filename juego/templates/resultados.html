@@ -4,21 +4,83 @@
 
 
 {% block contenido %}
+<style>
+    table{
+        margin-left: auto;
+        margin-right: auto;
+    }
+   
+   tr{
+      
+        border-width: 0.10cm;
+        border-style: solid;
+        border-color:#87CEFA;
+  
+    }
+    td{
+        border-width: 0.10cm;
+        border-style: solid;
+    }
+
+    th{
+        border-width: 0.10cm;
+        border-style: solid;
+    }
+    
+    h1{
+
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+    }
+
+     #div-bajo{
+     padding-top: 15px;
+     padding-bottom: 50px;
+  
+    }
+    #encabezado{
+            color: aliceblue;
+            background-color:#87CEFA ;
+    }
+    #ranking{
+            color:#3CB371 ;
+    }
+    
+</style>
 <div>
 		<h2>Felicidades {{user.username}} </h2>
         <h3>Contestaste {{cantidad}} preguntas, de la cuales {{correctas}} son correctas</h3>
-        <h3>Segui Jugando para estar en nuestro RANKING!</h3>
+        <h3>Segui Jugando para estar en nuestro <span id="ranking">RANKING!</span> </h3>
         
-        
+  <table>
+            <tr id="encabezado">   
+                <th><h3>Preguntas</h3></th>
+                <th><h3>Tu Respuesta es:</h3></th>
+                <th><h3>Respuesta Correcta</h3></th>
+            
+            </tr>
+
+
         {%for linea, detalle in resultados.items %}
-        <p>{{linea}}: <strong>{{detalle.0}}</strong></p>
+           <tr>
+                <td>{{linea}} </td>
+                <td><h4>{{detalle.0}}</h4></td>
                 {%for cada_detalle in detalle.1%}
-        <p>Respuesta Correcta: <strong>{{cada_detalle}}</strong></p>
+                    <td>{{cada_detalle}}</td> 
                 {%endfor%}
-        {%endfor%}
+        
+            </tr>
+         {%endfor%}
+
+       
+  </table>
 </div>
+<div id="div-bajo"></div>
+
+
 
 <a href="{% url 'borrar' %}" class="btn btn-success">Quiero Jugar de Nuevo!</a>
 <a href="{% url 'logout' %}" class="btn btn-success">Salir</a>
+<div id="div-bajo"></div>
 
 {% endblock contenido %}
