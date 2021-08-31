@@ -1,0 +1,24 @@
+{% extends './bootstrap/base.html' %}
+{% load static %}
+
+
+
+{% block contenido %}
+<div>
+		<h2>Felicidades {{user.username}} </h2>
+        <h3>Contestaste {{cantidad}} preguntas, de la cuales {{correctas}} son correctas</h3>
+        <h3>Segui Jugando para estar en nuestro RANKING!</h3>
+        
+        
+        {%for linea, detalle in resultados.items %}
+        <p>{{linea}}: <strong>{{detalle.0}}</strong></p>
+                {%for cada_detalle in detalle.1%}
+        <p>Respuesta Correcta: <strong>{{cada_detalle}}</strong></p>
+                {%endfor%}
+        {%endfor%}
+</div>
+
+<a href="{% url 'borrar' %}" class="btn btn-success">Quiero Jugar de Nuevo!</a>
+<a href="{% url 'logout' %}" class="btn btn-success">Salir</a>
+
+{% endblock contenido %}

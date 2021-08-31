@@ -32,8 +32,10 @@ class Juego(models.Model):
     puntaje = models.IntegerField(default=0)
     cantidad_preguntas_contestadas = models.IntegerField(default=0)
 
+
     usuario = models.ForeignKey(Usuario, on_delete = models.CASCADE)
 
 class PreguntaContestada(models.Model):
     usuario = models.ForeignKey(Usuario, on_delete = models.SET_NULL, null=True)
+    correcta = models.BooleanField(default = False)
     pregunta = models.ForeignKey('Pregunta', on_delete = models.SET_NULL, null=True)
