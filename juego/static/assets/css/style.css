@@ -127,7 +127,8 @@ label{
 --------------------------------------------------------------*/
 #topbar {
   background: #545454;
-  padding: 10px 0;
+  padding-top: 2px;
+  padding-bottom: 2px;
   font-size: 14px;
 }
 

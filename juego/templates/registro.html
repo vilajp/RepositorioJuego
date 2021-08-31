@@ -4,6 +4,13 @@
 
 
 {% block contenido %}
+<style>
+    #div-registro{
+    padding-top: 15px;
+    padding-bottom: 50px;
+ 
+   }
+</style>
 
 <form method="POST">{% csrf_token %}
     {{form.as_p}}
@@ -11,5 +18,9 @@
 
 
     <input type="submit" name="" value="REGISTRAR">
+</form>
+    <div id="div-registro">
+
+    </div>
 
 {% endblock contenido %}
