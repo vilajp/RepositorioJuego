@@ -40,18 +40,23 @@ def comienzo(request):
 
         while cantidad > len(lista_pc):
             una_id = random.randint(1,cantidad)
-
+            termine = False
             if una_id not in lista_pc:
                 una_pregunta = Pregunta.objects.get(id=una_id)
                 categoria_pregunta = Categoria.objects.get(id = una_pregunta.categoria.pk)
                 break
         else:
-            mensaje = "Ya termino de contestar todas las preguntas"
+            una_pregunta =  "Felicidades! contestaste todas las preguntas! Sali del Juego para ver tus resultsfos"
+            respuestas = ""
+            termine = True
+            categoria_pregunta = "Finalizo"
 
         # Se obtienen las respuestas
-        for r in Respuesta.objects.all():
-            if r.pregunta_id == una_pregunta.pk:
-                respuestas.append(r)
+        if not termine:
+            for r in Respuesta.objects.all():
+                if r.pregunta_id == una_pregunta.pk:
+                  respuestas.append(r)
+
 
         context = {"pregunta":una_pregunta,
                 "respuestas":respuestas, 
